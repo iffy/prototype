@@ -1580,7 +1580,7 @@ new Test.Unit.Runner({
   },
   
   testClonePosition: function() {
-    var element = new Element('div').update('bar');
+    var element = new Element('div').update('dolly');
     $(document.body).insert(element);
     element.absolutize();
     var reference = $('test-clone-position-reference');
