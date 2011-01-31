@@ -1577,6 +1577,25 @@ new Test.Unit.Runner({
     // unregistered.
     simulateClick(child);
     this.assert(!trigger, "fired event should not have triggered handler");
+  },
+  
+  testClonePosition: function() {
+    var element = new Element('div').update('bar');
+    $(document.body).insert(element);
+    element.absolutize();
+    var reference = $('test-clone-position-reference');
+    
+    element.clonePosition(reference);
+    
+    elayout = element.getLayout();
+    rlayout = reference.getLayout();
+        
+    this.assertEqual(elayout.get('width'), rlayout.get('width'), "Element widths should be the same");
+    this.assertEqual(elayout.get('height'), rlayout.get('height'), "Element heights should be the same");
+    this.assertEqual(elayout.get('left'), rlayout.get('left'), "Layout.left should be the same");
+    this.assertEqual(elayout.get('top'), rlayout.get('top'), "Layout.top should be the same");
+    this.assertEqual(elayout.get('bottom'), rlayout.get('bottom'), "Layout.bottom should be the same");
+    this.assertEqual(elayout.get('right'), rlayout.get('right'), "Layout.right should be the same");
   }
 });
 
